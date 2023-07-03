@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
-import ConstructionProject from "./constructionProject.entity";
+import Projects from "./projects.entity";
 
 @Entity("engineer")
 class Engineer {
@@ -22,8 +22,8 @@ class Engineer {
   @Column({length: 60})
   email: string
 
-  @OneToMany(() => ConstructionProject, (constructionProject) => constructionProject.engineer)
-  constructionProject: ConstructionProject[]
+  @OneToMany(() => Projects, (projects) => projects.engineer)
+  projects: Projects[]
 }
 
 export default Engineer

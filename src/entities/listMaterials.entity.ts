@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable} from "typeorm";
-import Materials from "./materials.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany} from "typeorm";
+import { PListMaterials } from "./pListMaterials.entity";
 
 @Entity("list_materials")
 class ListMaterials {
@@ -7,15 +7,14 @@ class ListMaterials {
   @PrimaryGeneratedColumn("uuid")
   id: string
 
-  @Column()
+  @Column({default: 0} )
   subtotal: number
 
-  @Column()
+  @Column({default: 0})
   quantity: number
 
-  @ManyToMany(() => Materials, (material) => material.listMaterials)
-  @JoinTable()
-  material: Materials[]
+  @OneToMany(() => PListMaterials, (plistMaterials) => plistMaterials.listMaterials)
+  pListMaterials: PListMaterials[]
 }
 
 export default ListMaterials

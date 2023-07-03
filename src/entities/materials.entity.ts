@@ -1,6 +1,6 @@
 
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from "typeorm"
-import ListMaterials from "./listMaterials.entity"
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm"
+import { PListMaterials } from "./pListMaterials.entity"
 
 @Entity("materials")
 class Materials {
@@ -17,8 +17,8 @@ class Materials {
   @Column()
   value: number
 
-  @ManyToMany(() => ListMaterials, (listMaterials) => listMaterials.material)
-  listMaterials: ListMaterials[]
+  @OneToMany(() => PListMaterials, (plistMaterials) => plistMaterials.materials)
+  pListMaterials: PListMaterials[]
 }
 
 export default Materials
